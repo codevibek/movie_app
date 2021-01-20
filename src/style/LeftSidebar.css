@@ -1,0 +1,11 @@
+.genrelist{
+    
+}
+button{
+    background-color:aliceblue;
+    border: 1px solid rgb(44, 48, 63);
+    border-radius: 5px;
+}
+button:hover{
+background-color: rgb(102, 130, 155);
+}

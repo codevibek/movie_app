@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 .card{
     width: 200px;
     height: 350px;
@@ -12,14 +13,43 @@
     display: flex;
     flex-direction: column;
     padding: 0 0 0 5px;
+    align-items: center;
+    border: 1px solid whitesmoke;
 
+
+
+}
+.front >p {
+    position: absolute;
+    top: 0;
+    color: rgb(155, 41, 60);
 }
 .front__image{
     height: 100%;
     width: 100%;
     object-fit: contain;
+    margin: 2px;
+}
+.front__rating{
+    position: absolute;
+    bottom: 0;
+    font-style: bold;
+
 }
 .back{
     height: 100%;
     width: 100%;
+    overflow: scroll;
+    display:flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.back > p{
+    background-color: aliceblue;
+    padding: 1rem;
+   overflow: scroll;
+    height: 220px;
+    width: 100%;
+    font-family: 'Dancing Script', cursive;
+    font-size: 20px;
 }

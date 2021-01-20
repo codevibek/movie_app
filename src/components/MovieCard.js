@@ -1,25 +1,26 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import ReactCardFlip from 'react-card-flip'
 import "../style/MovieCard.css"
 // import ReactStars from "react-rating-stars-component"
 import {Link} from 'react-router-dom'
+import  {GlobalContext} from '../context/GlobalState'
 
  const MovieCard = ({poster,id,rating,overview,title,}) => {
     const [isFlipped,setIsflipped]= useState('false')
-    
-    const handleMouseEnter=(e)=>{
-        e.preventDefault()
-        setIsflipped(!isFlipped)
-    }
-    const handleMouseLeave=(e)=>{
-        e.preventDefault()
-        setIsflipped(!isFlipped)
+    const {removeMovieFromWatchlist,addMovieToWatchlistremoveMovieFromWatched,moveMovieToWatchlist} = useContext(GlobalContext)
 
+    const handleChange=(e)=>{
+        e.preventDefault()
+        setIsflipped(!isFlipped)
     }
+   
     return (
         //  <Link to={`/moviedetail:${id}`}>
-              <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal" className="card">
-              <div className="front" onMouseEnter={handleMouseEnter} >
+        <div className="card">
+            
+
+              <ReactCardFlip isFlipped={isFlipped} infinite={true} flipDirection="horizontal" >
+              <div className="front" onMouseEnter={handleChange} >
                 <img src={poster} alt={title} className="front__image"/>
                 <p><strong>{title}</strong></p>
                 <div className="front__rating">
@@ -29,7 +30,7 @@ import {Link} from 'react-router-dom'
                 
               </div>
        
-              <div className="back" onMouseLeave={handleMouseLeave}>
+              <div className="back" onMouseLeave={handleChange}>
                   <div className="buttonSection">
                       <button className="watchlist">👀</button>
                   </div>
@@ -37,6 +38,7 @@ import {Link} from 'react-router-dom'
                 <p className="back__overview">{overview}</p>
               </div>
             </ReactCardFlip>
+            </div>
         //  </Link>
           
           

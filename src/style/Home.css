@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+}
+.genreContainer{
+    flex:0.1;
+}
+.cardContainer{
+    display: flex;
+    flex: 0.8;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}

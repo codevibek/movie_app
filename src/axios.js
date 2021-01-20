@@ -22,7 +22,7 @@ export const fetchMovies=async(genre_id) =>{
                 api_key:apikey,
                 language:"en_US",
                 page:currentPage,
-                with_genre:genre_id,
+                with_genres:genre_id,
                 sort_by:"popularity.desc"
             }
         })
@@ -30,7 +30,7 @@ export const fetchMovies=async(genre_id) =>{
             id:m['id'],
             backposter: imageUrl + m['backdrop_path'],
             title: m['title'],
-            rating: m['vote_count'],
+            rating: m['vote_average'],
             overview:m['overview'],
             poster:imageUrl + m['poster_path']
         }))
