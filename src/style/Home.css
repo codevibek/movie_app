@@ -1,13 +1,12 @@
 .container{
     display: flex;
+    color: rgb(32, 57, 80);
 }
-.genreContainer{
-    flex:0.1;
-}
+
 .cardContainer{
     display: flex;
-    flex: 0.8;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-around;
     
 }

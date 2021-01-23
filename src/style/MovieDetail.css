@@ -1,0 +1,40 @@
+.deatils__imageContainer{
+    height: 600px;
+    width: 100%;
+}
+.deatils__imageContainer>img{
+    object-fit: fill;
+    height: 100%;
+    width: 100%;
+
+}
+.details__genre{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+}
+.details__genre>li{
+    border: 1px solid rgb(53, 50, 50);
+    margin: 10px;
+    border-radius: 12px;
+    padding: 3px;
+
+}
+.details__casts{
+    display: flex;
+    justify-content: space-between;
+}
+.details__cast{
+    margin: 20px;
+}
+.details__cast>img{
+    border-radius: 50%;
+}
+.details__characterDetails{
+
+}
+.details__similarMovie{
+    display: flex;
+    justify-content: space-between;
+}

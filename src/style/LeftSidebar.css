@@ -1,11 +1,19 @@
 .genrelist{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    color: rgb(32, 57, 80);
     
+
 }
 button{
-    background-color:aliceblue;
-    border: 1px solid rgb(44, 48, 63);
-    border-radius: 5px;
+    margin-right:auto;
+    border: none;
+    margin-bottom:10px;
+    background-color:white;
+    overflow: hidden;
+
 }
 button:hover{
-background-color: rgb(102, 130, 155);
+    color: blue;
 }

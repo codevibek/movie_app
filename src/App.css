@@ -1,12 +1,17 @@
-
+.app{
+    color: rgb(32, 57, 80);
+}
 .app__body{
     display: flex;
     
+}
+.left{
+    flex:0.1
 }
 
 .middle{
  flex:0.8;
 }
 .right{
-    flex:0.15;
+    flex:0.1;
 }

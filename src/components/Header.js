@@ -7,7 +7,7 @@ export const Header = () => {
         <div className="header">
             <div className="header__search">
             <form>
-            <input type="text" placeholder="search"/>
+            <input type="text" placeholder="search" />
             </form>
             </div>
            
@@ -15,10 +15,16 @@ export const Header = () => {
             <ul className="header__navlist">
                 <Link className="header__navItem" to="/toprated"><li>Top Rated</li></Link>
                 <Link className="header__navItem" to="/upcomming"><li>UpComming</li></Link>
-                <Link className="header__navItem" to="/latest"><li>Latest</li></Link>
                 <Link className="header__navItem" to="/popular"><li>Popular</li></Link>
 
             </ul>
+            </div>
+            <div className="ham-wrapper">
+
+            
+            <div className="hamburger">
+
+            </div>
             </div>
            
         </div>

@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap');
 .card{
+    margin: 20px 30px;
     width: 200px;
     height: 350px;
     border: 1px solid whitesmoke;
     white-space: nowrap;
-    
+    color: rgb(32, 57, 80);
 
 }
 .front{
@@ -19,23 +20,14 @@
 
 
 }
-.front >p {
-    position: absolute;
-    top: 0;
-    color: rgb(155, 41, 60);
-}
+
 .front__image{
     height: 100%;
     width: 100%;
-    object-fit: contain;
-    margin: 2px;
+    object-fit: fill;
+    
 }
-.front__rating{
-    position: absolute;
-    bottom: 0;
-    font-style: bold;
 
-}
 .back{
     height: 100%;
     width: 100%;
@@ -52,4 +44,16 @@
     width: 100%;
     font-family: 'Dancing Script', cursive;
     font-size: 20px;
+}
+.buttonSection{
+    display: flex;
+    justify-content: space-between;
+}
+.details{
+    text-decoration: none;
+    color: black;
+}
+.details:hover{
+    color: rgb(32, 57, 80);
+    transform: scale(1.04);
 }

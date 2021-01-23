@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {fetchGenreList, fetchMovies} from '../axios.js'
+import {fetchGenreList} from '../axios.js'
 import {Link} from 'react-router-dom'
 import '../style/LeftSidebar.css'
 
