@@ -1,13 +1,33 @@
-import React from 'react'
+import React,{useState} from 'react'
 import '../style/Header.css'
 import {Link} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 export const Header = () => {
+    const [movies,setMovies]= useState([])
+    const [query,setQuery] = useState('')
+    let history = useHistory();
+    const handleFormSubmit=async(e)=>{
+        e.preventDefault()
+        
+            
+              history.push("/searchResult");
+        
+        
+        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${query}`)
+        .then(res=>res.json())
+        .then(data=>{
+            console.log(data)
+            setMovies(data)})
+
+            setQuery('')
+    }
+     
     return (
         <div className="header">
             <div className="header__search">
-            <form>
-            <input type="text" placeholder="search" />
+            <form onSubmit={handleFormSubmit}>
+            <input type="text"  value={query} placeholder="search" onChange={(e)=>setQuery(e.target.value)} />
             </form>
             </div>
            

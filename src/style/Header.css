@@ -13,8 +13,7 @@
     width: 40%;
     padding: 5px;
     display: flex;
-    align-items: center;
-    display: flex;
+    align-items: center; 
 
 }
 input{
@@ -26,7 +25,7 @@ input{
     margin-left: 20px;
 
 }
-input:active, input:focus{
+input:active, input:focus,input:hover{
     border: 0;
     cursor: pointer;
 }

@@ -5,13 +5,10 @@ const url="https://api.themoviedb.org/3"
 const topRatedUrl=`${url}/movie/top_rated`
 const popularUrl=`${url}/movie/popular`
 const upCommingUrl=`${url}/movie/upcoming`
-const latestUrl=`${url}/movie/latest`
 const movieUrl=`${url}/movie`
 const similarMovieUrl=`${url}/movie`
 const genreListUrl=`${url}/genre/movie/list`
 const genreUrl=`${url}/discover/movie`
-const searchUrl=`${url}/search/movie`
-const personUrl=`${url}/person`
 const imageUrl = `https://image.tmdb.org/t/p/original`
 const currentPage=1
 
@@ -39,7 +36,7 @@ export const fetchMovies=async(genre_id) =>{
     
 }
 
-export const fetchTopRatedMovies=async()=>{
+export const fetchTopRatedMovies=async(currentPage)=>{
     try{
     const {data} = await axios.get(topRatedUrl,{
         
@@ -50,6 +47,7 @@ export const fetchTopRatedMovies=async()=>{
                 sort_by:"popularity.desc"
         }
     })
+    const pages = data['total_pages']
         const modifiedData = data['results'].map(m=>({
             id:m['id'],
             backposter: imageUrl + m['backdrop_path'],

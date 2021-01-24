@@ -12,6 +12,8 @@ import { LeftSidebar } from './components/LeftSidebar'
 import { fetchMovies } from './axios'
 
 import './App.css'
+import { SearchResult } from './components/SearchResult'
+import { WatchList } from './components/WatchList'
 
 function App() {
   const [movies, setMovies] = useState([])
@@ -50,9 +52,17 @@ const handleGenreClick = async(genre_id) =>{
             <TopRated />
 
             </Route>
+            <Route path="/watchlist">
+            <WatchList />
+
+            </Route>
             <Route path="/moviedetail/:id" component={MovieDetail}>
 
             </Route>
+            <Route path="/searchResult/:movies" component={SearchResult}>
+
+</Route>
+            
           </Switch>
         
         </div>
@@ -61,7 +71,7 @@ const handleGenreClick = async(genre_id) =>{
         </div>
 
       </div>
-      <Footer/>
+      {/* <Footer/> */}
       </Router>
       
   );

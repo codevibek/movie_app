@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import ReactCardFlip from 'react-card-flip'
 import "../style/MovieCard.css"
 import ReactStars from "react-rating-stars-component"
@@ -6,15 +6,19 @@ import {Link} from 'react-router-dom'
 
  const MovieCard = ({movie,type}) => {
     const [isFlipped,setIsflipped]= useState('false')
-
+  const [watchlist, setWatchlist] = useState([])
   const {poster,id,rating,overview,title}= movie
-
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(watchlist))
+  }, [watchlist])
 
     const handleChange=(e)=>{
         e.preventDefault()
         setIsflipped(!isFlipped)
     }
     const addMovieToWatchlist=(movie)=>{
+      
+      setWatchlist(watchlist.concat(movie) )
       
     }
    
