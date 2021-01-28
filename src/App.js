@@ -11,22 +11,32 @@ import { MovieDetail } from './components/MovieDetail'
 import { LeftSidebar } from './components/LeftSidebar'
 import { fetchMovies } from './axios'
 
+
 import './App.css'
 import { SearchResult } from './components/SearchResult'
 import { WatchList } from './components/WatchList'
 
 function App() {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState({})
+  const [currentPage,setCurrentPage] = useState(1)
   useEffect(()=>{
     const fetchAPI=async()=>{
-        setMovies(await fetchMovies())
+        const returnedMovies = (await fetchMovies())
+        setMovies(returnedMovies)
     }
     fetchAPI()
 },[])
 const handleGenreClick = async(genre_id) =>{
     setMovies(await fetchMovies(genre_id))
-    console.log(movies)
+
 }
+const nextPage = async(pageNumber) => {
+   setMovies(await fetchMovies(pageNumber))
+        
+        setCurrentPage(pageNumber)
+        
+}
+
   return (
   
       <Router>
@@ -34,7 +44,7 @@ const handleGenreClick = async(genre_id) =>{
       <div className="app__body">
         <div className="left">
           <LeftSidebar handleGenreClick={handleGenreClick}/>
-        </div>
+        </div> 
         
         <div className="middle">
           <Switch>
@@ -46,7 +56,7 @@ const handleGenreClick = async(genre_id) =>{
               <Popular/>
             </Route>
             <Route exact path="/">
-              <Home movies={movies}/>
+              <Home movies={movies} currentPage={currentPage} nextPage={nextPage}/>
             </Route>
             <Route path="/toprated">
             <TopRated />
@@ -59,7 +69,7 @@ const handleGenreClick = async(genre_id) =>{
             <Route path="/moviedetail/:id" component={MovieDetail}>
 
             </Route>
-            <Route path="/searchResult/:movies" component={SearchResult}>
+            <Route path="/searchResult" component={SearchResult}>
 
 </Route>
             
@@ -71,7 +81,7 @@ const handleGenreClick = async(genre_id) =>{
         </div>
 
       </div>
-      {/* <Footer/> */}
+      <Footer/>
       </Router>
       
   );

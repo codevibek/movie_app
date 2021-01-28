@@ -7,30 +7,33 @@
     display: flex;
     align-items: center;
     background-color: white;
-    color: rgb(32, 57, 80);
+    background-color: rgb(21, 21, 43);
 }
 .header__search{
-    width: 40%;
-    padding: 5px;
+    flex: 0.6;
     display: flex;
-    align-items: center; 
+    align-items: center;
+}
+.header__search>form{
+    flex: 1;
+    display: flex;
 
 }
-input{
-    border: none;
-    color: rgb(134, 122, 122);
-    flex:1;
-    height: 30px;
-    border-bottom: 1px solid whitesmoke ;
+.header__search>form>input{
+    flex: 1;
+    border:none ;
     margin-left: 20px;
+    height: 1.5rem;
+    border-radius: 3px;
+
 
 }
-input:active, input:focus,input:hover{
-    border: 0;
-    cursor: pointer;
-}
+
+
+
+
 .header__nav{
-    margin-left: auto;
+    flex: 0.4;
 }
 .header__navlist{
     display: flex;
@@ -53,7 +56,7 @@ input:active, input:focus,input:hover{
     width: 80px;
     justify-content: center;
     display: flex;
-    color: black;
+    color: rgb(130, 130, 212);
 
 }
 
@@ -71,16 +74,18 @@ input:active, input:focus,input:hover{
 
 
 
-@media screen and (max-width:600px){
-
+/* @media screen and (max-width:600px){
+    .header__navlist{
+        visibility: hidden;
+    }
    .ham-wrapper{
        position: absolute;
        top: 0;
        right: 0;
        z-index: 2;
-       width: 40px;
-       height: 40px;
-       padding: 1rem;
+       width: 25px;
+       height: 17px;
+       padding: .5rem;
        display: flex;
        align-items: center;
        justify-content: center;
@@ -89,7 +94,7 @@ input:active, input:focus,input:hover{
        position: relative;
        width: 100%;
        height: 2px;
-       background-color: black;
+       background-color: white;
        display: block;
        align-items: center;
        justify-content: center;
@@ -107,4 +112,4 @@ input:active, input:focus,input:hover{
    .hamburger:after{
        top: 10px;
    }
-}
+} */

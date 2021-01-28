@@ -10,9 +10,8 @@ const similarMovieUrl=`${url}/movie`
 const genreListUrl=`${url}/genre/movie/list`
 const genreUrl=`${url}/discover/movie`
 const imageUrl = `https://image.tmdb.org/t/p/original`
-const currentPage=1
-
-export const fetchMovies=async(genre_id) =>{
+let currentPage
+export const fetchMovies=async(genre_id,currentPage) =>{
     try{
         const {data} =await axios.get(genreUrl,{
             params:{
@@ -23,6 +22,7 @@ export const fetchMovies=async(genre_id) =>{
                 sort_by:"popularity.desc"
             }
         })
+        const pages = data['total_pages']
         const modifiedData = data['results'].map(m=>({
             id:m['id'],
             backposter: imageUrl + m['backdrop_path'],
@@ -31,7 +31,7 @@ export const fetchMovies=async(genre_id) =>{
             overview:m['overview'],
             poster:imageUrl + m['poster_path']
         }))
-        return modifiedData
+        return ({modifiedData,pages})
     }catch(error){}
     
 }
@@ -57,11 +57,15 @@ export const fetchTopRatedMovies=async(currentPage)=>{
             overview:m['overview'],
             poster:imageUrl + m['poster_path']
         }))
-        return modifiedData
+        let allData = {
+            modifiedData,
+            pages
+        }
+        return (allData)
 }catch(error){}
 }
 
-export const fetchPopularMovies= async()=>{
+export const fetchPopularMovies= async(currentPage)=>{
     try{
         const {data} = await axios.get(popularUrl,{
             params: {
@@ -70,6 +74,7 @@ export const fetchPopularMovies= async()=>{
                 page: currentPage,
             }
         })
+        const pages = data['total_pages']
         const modifiedData = data['results'].map(m=>({
             id:m['id'],
             backPoster:imageUrl + m['backdrop_path'],
@@ -79,19 +84,20 @@ export const fetchPopularMovies= async()=>{
             overview:m['overview'],
             rating:m['vote_average']
         }))
-       return modifiedData
+       return ({modifiedData,pages})
     }catch(error){}
 }
 
-export const fetchUpCommingMovies=async()=>{
+export const fetchUpCommingMovies=async(currentPage)=>{
     try{
     const {data} = await axios.get(upCommingUrl,{
         params: {
             api_key:apikey,
             language:"en_US",
-            page: 1
+            page: currentPage
         }
     })
+    const pages = data['total_pages']
     const modifiedData = data['results'].map(m=>({
         id:m['id'],
         backPoster:imageUrl + m['backdrop_path'],
@@ -100,8 +106,7 @@ export const fetchUpCommingMovies=async()=>{
         overview:m['overview'],
         rating:m['vote_average']
     }))
-    console.log(modifiedData)
-   return modifiedData
+   return ({modifiedData,pages})
 }catch(error){}
 }
 

@@ -13,6 +13,7 @@ export const LeftSidebar = ({handleGenreClick}) => {
     },[])
     const fetchAPI=async()=>{
         setGenres(await fetchGenreList())
+        
     }
 
    

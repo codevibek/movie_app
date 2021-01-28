@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import {fetchPopularMovies} from '../axios'
 import MovieCard from "./MovieCard"
+import Paging from './Paging' 
 
 export const Popular = () => {
-    const [popular, setPopular] = useState([])
+    const [popular, setPopular] = useState({})
     const [currentPage, setCurrentPage] = useState(1)
     const type=""
     useEffect(()=>{
@@ -13,12 +14,16 @@ export const Popular = () => {
         
         fetchAPI()
     },[])
+    const nextPage=async(pageNumber)=>{
+        setPopular(await fetchPopularMovies(pageNumber))
+        setCurrentPage(pageNumber)
+    }
     console.log(popular)
     return (
         <div className='"container'>
         <div className="cardContainer">
             
-            {popular.map((movie)=>{
+            {popular?.modifiedData?.map((movie)=>{
                 return(
                     <MovieCard key={movie.id} movie={movie} type={type}/>
 
@@ -26,6 +31,7 @@ export const Popular = () => {
             })}
             
         </div>
+        <Paging pages={popular?.pages} nextPage={nextPage} currentPage={currentPage} />
         </div>
     )
 }

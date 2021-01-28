@@ -1,3 +1,58 @@
 .footer{
-    border-top: 2px solid black;
+    border-top: 2px solid #a89e9e;
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    height: fit-content;
+    background-color: rgb(21, 21, 43);
 }
+.footer__aboutMe{
+    width: 60%;
+}
+.footer__aboutMe > h2{
+    color: rgb(130, 130, 212);
+    margin-bottom: 20px;
+}
+.footer__aboutMe>p{
+    font-size: 12px;
+    margin: 3px 0;
+    color: rgb(130, 130, 212);
+
+}
+.footer__copyright{
+    font-size: 12px;
+    margin: 3px 0;
+    color: rgb(130, 130, 212);
+}
+.footer__social{
+    margin-top: 2rem ;
+    
+
+}
+.footer__socialItem{
+    text-decoration: none;
+    color: rgb(130, 130, 212);
+    margin: 0 5px;
+}
+.footer__socialItem:hover{
+    color: white;
+    transform: scale(1.04);    
+}
+.footer__contactMe>h2{
+    color: rgb(130, 130, 212);
+    margin-bottom: 20px;
+    padding: 5px;
+
+
+}
+form>label{
+    color: rgb(130, 130, 212);
+    margin-right: 10px;
+
+}
+.footer__contactMe>form>input{
+    margin-bottom: 2rem;
+    height: 1rem;
+    width: 9rem;
+}
+

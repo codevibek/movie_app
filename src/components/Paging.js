@@ -1,4 +1,5 @@
 import React from 'react'
+import '../style/Paging.css'
 
 const Paging = ({pages,nextPage,currentPage}) => {
     const pageLinks = []
@@ -9,14 +10,14 @@ const Paging = ({pages,nextPage,currentPage}) => {
     }
 
     return (
-        <div>
-            {currentPage > 1?<li  onClick={()=>nextPage(currentPage-1)}><a href="#">prev Page</a></li>:""}
-            {currentPage}
-            {currentPage < pages-1?<li  onClick={()=>nextPage(currentPage+1)}><a href="#">Next Page</a></li>:""}
+        <div className="paging">
+            {currentPage > 1?<div className="paging__page"  onClick={()=>nextPage(currentPage-1)}><a href="#">prev Page</a></div>:""}
+            <div className="paging__page">{currentPage}</div> 
+            {currentPage < pages-1?<div className="paging__page"  onClick={()=>nextPage(currentPage+1)}><a href="#">Next Page</a></div>:""}
 
         </div>
     )
 }
 
 export default Paging
- 
+  

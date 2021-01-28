@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import '../style/Header.css'
 import {Link} from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import {FaSearch} from 'react-icons/fa'
 
 export const Header = () => {
     const [movies,setMovies]= useState([])
@@ -11,16 +12,22 @@ export const Header = () => {
         e.preventDefault()
         
             
-              history.push("/searchResult");
+              history.push({
+                  pathname:'/SearchResult',
+                  search:`?${query}`,
+                //   state: {movies: {movies}}
+                  
+              });
         
         
-        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${query}`)
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-            setMovies(data)})
+        // await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1&include_adult=false&query=${query}`)
+        // .then(res=>res.json())
+        // .then(data=>{
+        //     setMovies(data)
+        //     console.log(movies)
+        // })
 
-            setQuery('')
+        //     setQuery('')
     }
      
     return (
@@ -29,6 +36,7 @@ export const Header = () => {
             <form onSubmit={handleFormSubmit}>
             <input type="text"  value={query} placeholder="search" onChange={(e)=>setQuery(e.target.value)} />
             </form>
+            <FaSearch style={{  color: "rgb(130, 130, 212)"}} onClick={handleFormSubmit}/>
             </div>
            
             <div className="header__nav">
@@ -38,14 +46,15 @@ export const Header = () => {
                 <Link className="header__navItem" to="/popular"><li>Popular</li></Link>
 
             </ul>
-            </div>
             <div className="ham-wrapper">
 
             
-            <div className="hamburger">
+<div className="hamburger">
 
+</div>
+</div>
             </div>
-            </div>
+           
            
         </div>
     )

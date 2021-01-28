@@ -1,7 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import {fetchMovieDetail, fetchSimilarMovie,fetchCasts} from '../axios'
 import ReactStars from 'react-rating-stars-component'
-import {Link } from "react-router-dom"
 import   '../style/MovieDetail.css'
 import MovieCard from './MovieCard'
 export const MovieDetail = ({match}) => {
@@ -19,19 +18,19 @@ export const MovieDetail = ({match}) => {
             setSimilarMovie(await fetchSimilarMovie(params.id))
         }
 
-        fetchAPI()
+        fetchAPI() 
     }, [])
   
     return (
         <div className="details">
             <div className="details__imageContainer">
-            <img onClick={()=>setIsOpen(true)} style={{height:400}} className="maovieDetails__img" src={`https://image.tmdb.org/t/p/original/${detail.backdrop_path}`} alt={detail.title}/>
+            <img onClick={()=>setIsOpen(true)} style={{height:400}} className="movieDetails__img" src={`https://image.tmdb.org/t/p/original/${detail.backdrop_path}`} alt={detail.title}/>
             </div>
             <strong>
             {detail.title}
             </strong>
             <div className="details__genre">
-            {detail.genres?.map((g,i)=>{
+            {detail.genres?.map((g,i)=>{ 
                 return(
                     <li keys={i}>
                         {g.name}
@@ -41,7 +40,7 @@ export const MovieDetail = ({match}) => {
             </div>
            
             <ReactStars classname="details__reactStars" count={detail.vote_average} size={20}/>
-            {detail.overview}
+            <div className="details__overview">{detail.overview}</div>
             <div className="details__casts">
             {casts?.slice(0,4).map((c,i)=>{
                return( <div className="details__cast">

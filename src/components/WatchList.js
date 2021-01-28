@@ -1,14 +1,28 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import MovieCard from './MovieCard'
+import '../style/Home.css'
+
 
 export const WatchList = () => {
-    const watchlist= localStorage.getItem('watchlist')?JSON.parse(localStorage.getItem('watchlist')): []
+    const [watchlist,setWatchlist]=useState([])
+    useEffect(() => {
+         const returnedWatchlist= localStorage.getItem('watchlist')?JSON.parse(localStorage.getItem('watchlist')): []
+        setWatchlist(returnedWatchlist)
 
+    }, [watchlist])
+    const type = "watchlist"
     return (
-        <div>
-            {watchlist?.map(movie=>{
+        <div className="container">
+            <div className="cardContainer">
 
-                console.log(movie)
-            })}
+            {watchlist?.map(movie=>{
+                    return(
+                        <MovieCard key={movie.id} movie={movie} type={type}/>
+
+                    )
+})}
         </div>
+        </div>
+
     )
 }

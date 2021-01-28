@@ -3,10 +3,10 @@ import { fetchMovies } from '../axios'
 import MovieCard from './MovieCard'
 import "../style/Home.css"
 import { LeftSidebar } from './LeftSidebar'
+import Paging from './Paging'
 
-export const Home = ({movies}) => {
+export const Home = ({movies,currentPage,nextPage}) => {
     // const [movies, setMovies] = useState([])
-    const [currentPage, setCurrentPage] = useState(1)
     const type= ""
     // useEffect(()=>{
     //     const fetchAPI=async()=>{
@@ -18,12 +18,11 @@ export const Home = ({movies}) => {
     //     setMovies(await fetchMovies(genre_id))
         
     // }
-console.log(movies)
     return (
         <div className='"container'>
             <div className="cardContainer">
                 
-                {movies.map((movie)=>{
+                {movies?.modifiedData?.map((movie)=>{
                     return(
                         <MovieCard key={movie.id} movie={movie} type={type}/>
 
@@ -31,6 +30,7 @@ console.log(movies)
                 })}
                 
             </div>
+            <Paging pages={movies?.pages} currentPage={currentPage} nextPage={nextPage}/>
            
             {/* <div className="genreContainer">
                 <LeftSidebar handleGenreClick={handleGenreClick}/>

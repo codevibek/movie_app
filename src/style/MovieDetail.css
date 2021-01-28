@@ -1,12 +1,13 @@
-.deatils__imageContainer{
-    height: 600px;
-    width: 100%;
+.details{
+    align-items: center;
 }
-.deatils__imageContainer>img{
-    object-fit: fill;
-    height: 100%;
-    width: 100%;
+.movieDetails__img{
+    height: 200px;
+    display: none;
 
+}
+.details__overview{
+    overflow: hidden;
 }
 .details__genre{
     list-style: none;

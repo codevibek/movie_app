@@ -7,9 +7,12 @@ import {Link} from 'react-router-dom'
  const MovieCard = ({movie,type}) => {
     const [isFlipped,setIsflipped]= useState('false')
   const [watchlist, setWatchlist] = useState([])
+  const [exist,setExist] = useState(false)
   const {poster,id,rating,overview,title}= movie
+
   useEffect(() => {
-    localStorage.setItem('watchlist', JSON.stringify(watchlist))
+    // localStorage.setItem('watchlist', JSON.stringify(watchlist))
+
   }, [watchlist])
 
     const handleChange=(e)=>{
@@ -17,9 +20,24 @@ import {Link} from 'react-router-dom'
         setIsflipped(!isFlipped)
     }
     const addMovieToWatchlist=(movie)=>{
+
+      let oldWatchList = JSON.parse(localStorage.getItem('watchlist'))
+      let isPresent = oldWatchList.find(mov=>mov.id===movie.id)
+      let notPresent = !isPresent
+      setExist(notPresent)
+      notPresent &&(
+        oldWatchList.push(movie)
+
+      )
+    localStorage.setItem('watchlist', JSON.stringify(oldWatchList))
       
-      setWatchlist(watchlist.concat(movie) )
-      
+    }
+    const removeMovie = (id) => {
+      let oldWatchList = JSON.parse(localStorage.getItem('watchlist'))
+      let afterDeletionWatchList = oldWatchList.filter(mov=> mov.id!==id )
+
+      localStorage.setItem('watchlist', JSON.stringify(afterDeletionWatchList))
+
     }
    
     return (
@@ -34,24 +52,38 @@ import {Link} from 'react-router-dom'
               </div>
        
               <div className="back" onMouseLeave={handleChange}>
-                  <div className="buttonSection">
-                 
-                    <button  onClick={()=>addMovieToWatchlist(movie)} className="watchlist">👀</button>
-
-                      <Link to={`/moviedetail/${id}`} className="details"    >Details</Link>
-                      </div>
+                  
                       <div className="title">
 
                       <p><i><b>{title}</b></i></p>
                       </div>
-                <div className="front__rating">
-                <p>Rating: {rating}</p>
-                <ReactStars count={rating} font={20}/>
+                      <div className="buttonSection">
+                 {type!=="watchlist" &&(
+                         <div   onClick={()=>addMovieToWatchlist(movie)} className="watchlist">
+                           👀
+                           <div className="watchlistText">Add to watchlist</div>
+                           </div>
+
+                 )
+                 }
+                  {type==="watchlist" &&(
+                         <button  onClick={()=>removeMovie(id)} className="watchlist">❌</button>
+
+                 )
+                 }
+
+                      <Link to={`/moviedetail/${id}`} className="details"    >Details</Link>
+                      </div>
+                      <div className="overviewContainer">
+                        <div><strong>Overview</strong></div>
+                        <div className="overview">{overview}</div>
+                      </div>
+                <div className="back__rating">
+                <p>Rating: <span>{rating}</span></p>
+                <ReactStars count={10} edit={false} isHalf={true} value={rating} font={20}/>
                 </div>
                  
                   
-                <h4>Overview</h4>
-                <p className="back__overview">{overview}</p>
               </div>
             </ReactCardFlip>
             </div>

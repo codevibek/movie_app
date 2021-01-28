@@ -2,8 +2,11 @@
     margin-left: 20px;
     display: flex;
     flex-direction: column;
-    color: rgb(32, 57, 80);
     
+
+}
+.genres>h3{
+    color: rgb(130, 130, 212);
 
 }
 button{
@@ -12,6 +15,8 @@ button{
     margin-bottom:10px;
     background-color:white;
     overflow: hidden;
+    color: rgb(130, 130, 212);
+
 
 }
 button:hover{

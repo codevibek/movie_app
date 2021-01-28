@@ -4,26 +4,28 @@ import MovieCard from './MovieCard'
 import Paging from './Paging'
 
 export const TopRated = () => {
-    const [topRated, setTopRated] = useState([])
+    const [topRated, setTopRated] = useState({})
     const [currentPage, setCurrentPage] = useState(1)
-    const pages=3
     const type=""
     useEffect(()=>{
         
         fetchAPI()
     },[])
     const fetchAPI=async()=>{
-        setTopRated(await fetchTopRatedMovies())
+        const returnedMovies=(await fetchTopRatedMovies())
+        setTopRated(returnedMovies)
+        
     }
     const nextPage=async(pagenumber)=>{
         setTopRated(await fetchTopRatedMovies(pagenumber))
         setCurrentPage(pagenumber)
     }
+    const pages = topRated?.pages 
     return (
         <div className='"container'>
             <div className="cardContainer">
                 
-                {topRated.map((movie)=>{
+                { topRated?.modifiedData?.map((movie)=>{
                     return(
                         <MovieCard key={movie.id} movie={movie} type={type}/>
 
